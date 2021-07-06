@@ -1,0 +1,22 @@
+{
+  "name": "my-todo-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Morris-Zin/Todo-Remaster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Morris-Zin/Todo-Remaster/issues"
+  },
+  "homepage": "https://github.com/Morris-Zin/Todo-Remaster#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
