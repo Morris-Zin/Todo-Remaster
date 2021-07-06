@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const totalTodos = useSelector((state) => state.todoReducer);
+
   const completedTodos = useSelector((state) =>
     state.todoReducer.filter((todo) => todo.complete)
   );

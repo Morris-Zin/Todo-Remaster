@@ -7,6 +7,8 @@ import "rodal/lib/rodal.css";
 import { addTodo } from "../actions";
 
 class ModalForm extends React.Component {
+
+  
   renderInput = ({ input, meta, label }) => {
     const inputClassName =
       "px-2 py-1 foucs:ring focus:ring-1 font-semibold text-gray-400 transition focus:ring-yellow-300 shadow-sm focus:outline-none border rounded-lg border-yellow-300 ";
@@ -27,7 +29,8 @@ class ModalForm extends React.Component {
   };
   onSubmit = (formvalues) => {
     this.props.reset();
-    this.props.addTodo(formvalues.todo);
+    console.log(formvalues); 
+    this.props.addTodo({todo: formvalues.todo, complete: false})
   };
 
   render() {
