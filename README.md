@@ -1,5 +1,5 @@
 # Todo-Remaster
-Todo app built with react,redux,tailwind and fastify
+Todo app built with react, redux, tailwind, fastify, node and mongodb
 
 <img src="./todoRemaster1.png" />
 
