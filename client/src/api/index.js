@@ -11,5 +11,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   });
 }
 
-export const FETCH_TODOS = () => API.get("/getTodos");
+export const FETCH_TODOS = () => API.get("/todos");
 export const CREATE_TODO = (todo) => API.post("/addTodo", { todo });
+export const DELETE_TODO = (id) => API.delete(`/todos/${id}`);
+export const TOOGLE_TODO = (id) => API.patch(`/todos/${id}`);

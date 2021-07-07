@@ -1,4 +1,9 @@
-import { ADD_TODO, GET_TODOS } from "../actions/types";
+import {
+  ADD_TODO,
+  COMPLETE_TODO,
+  GET_TODOS,
+  REMOVE_TODO,
+} from "../actions/types";
 
 export const todoReducer = (state = [], action) => {
   switch (action.type) {
@@ -8,17 +13,15 @@ export const todoReducer = (state = [], action) => {
     case ADD_TODO:
       return [...state, action.payload];
 
-    case "REMOVE_TODO":
+    case REMOVE_TODO:
       return state.filter((todo) => {
-        return todo.id !== action.id;
+        return todo._id !== action.id;
       });
-    case "TOOGLE_COMPLETE":
-      return state.map((todo) => {
-        if (todo.id === action.id) {
-          return { ...todo, complete: !todo.complete };
-        }
-        return todo;
-      });
+
+    case COMPLETE_TODO:
+      return state.map((todo) =>
+        todo._id === action.payload._id ? action.payload : todo
+      );
     default:
       return state;
   }

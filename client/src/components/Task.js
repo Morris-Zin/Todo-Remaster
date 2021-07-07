@@ -1,13 +1,15 @@
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { removeTodo, toggleComplete } from "../actions";
 
-const Task = ({ todos, removeTodo, toggleComplete }) => {
+const Task = ({ todos }) => {
+  const dispatch = useDispatch();
+
   const handleComplete = (id) => {
-    toggleComplete(id);
+    dispatch(toggleComplete(id));
   };
 
   const handleDelete = (id) => {
-    removeTodo(id);
+    dispatch(removeTodo(id));
   };
 
   return (
@@ -21,8 +23,8 @@ const Task = ({ todos, removeTodo, toggleComplete }) => {
             >
               <div className="flex items-center w-32 md:w-auto	">
                 <label
-                  onClick={() => handleComplete(todo.id)}
-                  htmlFor={todo.id}
+                  onClick={() => handleComplete(todo._id)}
+                  htmlFor={todo._id}
                   className={
                     todo.complete
                       ? `md:text-lg text-red-700 font-semibold md:tracking-wide line-through opacity-50 text-sm`
@@ -34,13 +36,13 @@ const Task = ({ todos, removeTodo, toggleComplete }) => {
               </div>
               <div>
                 <button
-                  onClick={() => handleComplete(todo.id)}
+                  onClick={() => handleComplete(todo._id)}
                   className="text-xs md:text-sm focus:outline-none transform  hover:-translate-y-1 text-red-500 font-bold ml-4 border-red-500 rounded-lg hover:border-0 hover:bg-red-500 hover:text-white transition border p-1 md:py-2 md:px-2"
                 >
                   Complete
                 </button>
                 <button
-                  onClick={() => handleDelete(todo.id)}
+                  onClick={() => handleDelete(todo._id)}
                   className="text-xs md:text-sm focus:outline-none transform hover:-translate-y-1 text-red-500 font-bold ml-4 border-red-500 rounded-lg hover:border-0 hover:bg-red-500 hover:text-white transition border p-1 md:py-2 md:px-2"
                 >
                   Delete

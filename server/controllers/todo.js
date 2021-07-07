@@ -13,10 +13,8 @@ const Todo = require("../models/Todo");
 // };
 
 async function todoRoutes(fastify, options) {
-  fastify.get("/getTodos", async (request, response) => {
-
+  fastify.get("/todos", async (request, response) => {
     const result = await Todo.find({});
-    console.log("this is result", result);  
     return { todos: result };
   });
 
@@ -25,10 +23,24 @@ async function todoRoutes(fastify, options) {
 
     if (!todo) return;
 
-    const newTodo =  await new Todo(todo); 
-    await newTodo.save(); 
-    
-    return { todos: newTodo }; 
+    const newTodo = await new Todo(todo);
+    await newTodo.save();
+
+    return { todos: newTodo };
+  });
+
+  fastify.patch("/todos/:id", async (request, response) => {
+    const { id } = request.params;
+    const todo = await Todo.findById(id);
+    todo.complete = !todo.complete;
+    await todo.save();
+    return { todos: todo };
+  });
+
+  fastify.delete("/todos/:id", async (request, response) => {
+    const { id } = request.params;
+    await Todo.findByIdAndDelete(id);
+    return { success: true };
   });
 }
 

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const fastify = require("fastify")({ logger: true });
 
 require("dotenv").config();
-require('./dbConnctor')(mongoose); 
+require("./dbConnctor")(mongoose);
 
 fastify.register(require("fastify-cors"));
 
